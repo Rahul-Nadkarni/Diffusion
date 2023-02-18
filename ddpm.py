@@ -13,7 +13,7 @@ logging.basicConfig(format="%(asctime)s - %(levelname)s: %(message)s", level=log
 
 
 class Diffusion:
-    def __init__(self, noise_steps=1000, beta_start=1e-4, beta_end=0.02, img_size=256, device="cuda"):
+    def __init__(self, noise_steps=1000, beta_start=1e-4, beta_end=0.02, img_size=256, device="cpu"):
         self.noise_steps = noise_steps
         self.beta_start = beta_start
         self.beta_end = beta_end
@@ -96,11 +96,11 @@ def launch():
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
     args.run_name = "DDPM_Uncondtional"
-    args.epochs = 500
+    args.epochs = 800
     args.batch_size = 12
-    args.image_size = 64
-    args.dataset_path = "/Users/rahulsmacbook/PycharmProject/diffusion/datasets/landscapes"
-    args.device = "cuda"
+    args.image_size = 32
+    args.dataset_path = r"/Users/rahulsmacbook/PycharmProject/diffusion/datasets"
+    args.device = "cpu"
     args.lr = 3e-4
     train(args)
 
